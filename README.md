@@ -1,9 +1,10 @@
 # Tyro Obfuscator
 
-Production-grade Vite plugin for selectively obfuscating client-side JavaScript chunks using the mature [`javascript-obfuscator`](https://github.com/javascript-obfuscator/javascript-obfuscator) engine, designed specifically with **Laravel + Vite** workflows in mind.
+[![Tests](https://github.com/hasinhayder/tyro-obfuscator/actions/workflows/ci.yml/badge.svg)](https://github.com/hasinhayder/tyro-obfuscator/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/tyro-obfuscator.svg?style=flat-square)](https://www.npmjs.com/package/tyro-obfuscator)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-[![npm version](https://img.shields.io/npm/v/tyro-obfuscator.svg)](https://www.npmjs.com/package/tyro-obfuscator)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+Production-grade Vite plugin for selectively obfuscating client-side JavaScript chunks using the mature [`javascript-obfuscator`](https://github.com/javascript-obfuscator/javascript-obfuscator) engine, designed specifically with **Laravel + Vite** workflows in mind.
 
 ---
 
