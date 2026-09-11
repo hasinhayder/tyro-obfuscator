@@ -1,0 +1,66 @@
+{
+  "name": "tyro-obfuscator",
+  "version": "1.0.0",
+  "description": "Production-quality Vite plugin for selectively obfuscating JavaScript chunks using javascript-obfuscator, optimized for Laravel and modern web applications.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Hasin Hayder",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hasinhayder/tyro-obfuscator.git"
+  },
+  "homepage": "https://github.com/hasinhayder/tyro-obfuscator#readme",
+  "bugs": {
+    "url": "https://github.com/hasinhayder/tyro-obfuscator/issues"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "laravel",
+    "obfuscation",
+    "obfuscator",
+    "javascript-obfuscator",
+    "security",
+    "build"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "javascript-obfuscator": "^5.1.0",
+    "picomatch": "^4.0.2"
+  },
+  "peerDependencies": {
+    "vite": ">=5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/picomatch": "^3.0.0",
+    "rollup": "^4.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0",
+    "vite": "^6.0.0",
+    "vitest": "^2.0.0"
+  }
+}

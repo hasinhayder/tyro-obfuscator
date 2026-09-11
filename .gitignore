@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+dist/
+*.tsbuildinfo
+
+# Test & coverage
+coverage/
+tests/.tmp/
+.review/
+
+# Logs & caches
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+.vite/
+
+# Operating System & IDE files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Packaging & Private Workspace Docs
+*.tgz
+plan.md
+development.md
+pitch-deck.md
+release.md
+landing
+*.zip
+.cursor
+.commandcode
+.gemini
+.ai
+.kilo
+social
