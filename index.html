@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tyro Obfuscator — Intelligent JavaScript Obfuscation for Laravel & Vite</title>
+  <meta name="description" content="Selective AST-level JavaScript obfuscation for Vite & Laravel. Shield proprietary business logic, exclude third-party vendor code, zero dev-server overhead.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient backdrop glows -->
+  <div class="glow-sphere sphere-mid" aria-hidden="true"></div>
+
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo-mark" aria-label="Tyro Obfuscator Home">
+        <span class="logo-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M10 12l2 2 4-4"/>
+          </svg>
+        </span>
+        <span class="logo-text">TYRO<strong>OBFUSCATOR</strong></span>
+      </a>
+      <div class="header-right">
+        <span class="version-pill">v1.0.0 • Vite &amp; Laravel</span>
+        <a href="https://www.npmjs.com/package/tyro-obfuscator" class="btn-nav-link" target="_blank" rel="noopener" aria-label="npm Package">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.336h-4.606v-9.33h-4.622v9.33H5.13z"/>
+          </svg>
+          <span>npm</span>
+        </a>
+        <a href="https://github.com/hasinhayder/tyro-obfuscator" class="btn-nav-link" target="_blank" rel="noopener" aria-label="GitHub Repository">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+          <span>GitHub</span>
+        </a>
+        <a href="#quickstart" class="btn-sm">Quickstart</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-container">
+        <div class="badge-row">
+          <span class="tag-status">
+            <span class="pulse-dot"></span>
+            JAVASCRIPT CODE PROTECTION IN LARAVEL
+          </span>
+        </div>
+
+        <h1 class="hero-title">
+          YOUR SOURCE CODE <br>
+          <span class="text-stroke">IS AN OPEN BOOK.</span> <br>
+          <span class="text-accent">SCRAMBLE IT.</span>
+        </h1>
+
+        <p class="hero-lead">
+          Stop exposing proprietary business algorithms, video players, and billing logic to DevTools.
+          Tyro Obfuscator selectively scrambles your Laravel application JavaScript with zero dev-server overhead.
+        </p>
+
+        <div class="hero-actions">
+          <div class="terminal-install-bar" id="install-trigger" title="Click to copy command">
+            <span class="cmd-prompt">$</span>
+            <span class="cmd-text" id="install-cmd">npm install -D tyro-obfuscator</span>
+            <button class="copy-btn" id="copy-btn" aria-label="Copy install command">
+              <span id="copy-label">COPY</span>
+            </button>
+          </div>
+          <a href="#demo" class="btn-primary">Test Obfuscation Live</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE DEMO LAB -->
+    <section class="section" id="demo">
+      <div class="container">
+        <div class="section-label red-accent">INTERACTIVE TESTBENCH</div>
+        <h2 class="bold-headline">
+          SEE THE TRANSFORMATION <br>
+          <span class="hl-red">IN REAL TIME</span>
+        </h2>
+        <p class="section-desc">
+          Compare human-readable source against obfuscated output across different presets. 
+          Notice how identifiers are hex-encoded, strings are encrypted, and control-flow is flattened.
+        </p>
+
+        <!-- Lab Window -->
+        <div class="lab-window">
+          <div class="lab-header">
+            <div class="window-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="lab-title">AST Obfuscator Sandbox</span>
+            <div class="lab-controls">
+              <div class="preset-switcher">
+                <button class="preset-pill" data-preset="light">Light</button>
+                <button class="preset-pill active" data-preset="balanced">Balanced</button>
+                <button class="preset-pill" data-preset="aggressive">Aggressive</button>
+              </div>
+              <button class="run-btn" id="run-btn">Switch Sample</button>
+            </div>
+          </div>
+
+          <div class="lab-grid">
+            <div class="lab-panel">
+              <div class="panel-tag">
+                <span>ORIGINAL SOURCE (CLEAR)</span>
+                <span class="badge-clear">Vulnerable to DevTools</span>
+              </div>
+              <pre class="code-box" id="code-clear"></pre>
+            </div>
+            <div class="lab-panel">
+              <div class="panel-tag">
+                <span>COMPILED OUTPUT (OBFUSCATED)</span>
+                <span class="badge-obf">High Entropy &bull; Decompilation Resistant</span>
+              </div>
+              <pre class="code-box" id="code-obfuscated"></pre>
+            </div>
+          </div>
+
+          <div class="lab-footer">
+            <div class="metric-group">
+              <div class="metric-item">Payload: <span id="metric-size">448 B -> 786 B (+75%)</span></div>
+              <div class="metric-item">Transform Time: <span id="metric-time">42ms</span></div>
+              <div class="metric-item">Code Entropy: <span id="metric-entropy">5.89 bits/byte</span></div>
+            </div>
+            <div>Powered by javascript-obfuscator</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE FEATURES -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-label cyan-accent">ENGINEERED FOR TEAMS</div>
+        <h2 class="bold-headline">
+          BUILT FOR SPEED. <br>
+          <span class="hl-cyan">SAFE FOR PRODUCTION.</span>
+        </h2>
+        <p class="section-desc">
+          Unlike crude post-build regexes, Tyro Obfuscator seamlessly hooks into Vite’s native bundling lifecycle.
+        </p>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <h3>Zero Dev-Server Overhead</h3>
+            <p>Runs strictly during production builds (<code>apply: 'build'</code>). Your local HMR dev server remains instant with zero compilation lag.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 22"/>
+                <polyline points="2 17 12 22 22 17"/>
+                <polyline points="2 12 12 17 22 12"/>
+              </svg>
+            </div>
+            <h3>Smart Vendor Detection</h3>
+            <p>Inspects the module graph to automatically exclude third-party libraries (<code>node_modules</code>), keeping your build times fast and bundles lean.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </div>
+            <h3>Source Map Isolation</h3>
+            <p>Source maps are dropped by default for obfuscated chunks, ensuring readable original code is never accidentally published to your production servers.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+            <h3>Rollup renderChunk Hook</h3>
+            <p>Processes chunks after bundling and tree-shaking are finalized, preserving ES module contracts, dynamic imports, and chunk graphs.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+            </div>
+            <h3>100% Laravel Native</h3>
+            <p>Preserves Vite’s <code>manifest.json</code> and output paths cleanly, so your <code>@vite()</code> Blade directives resolve without manual reconfiguration.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <h3>Non-Code Asset Immunity</h3>
+            <p>CSS, SVGs, web fonts, and images pass through untouched. Only eligible JavaScript chunks undergo AST transformation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRESETS TABLE -->
+    <section class="section" id="presets">
+      <div class="container">
+        <div class="section-label red-accent">CURATED PRESETS</div>
+        <h2 class="bold-headline">
+          THREE TUNED LEVELS. <br>
+          <span class="hl-red">ZERO GUESSWORK.</span>
+        </h2>
+        <p class="section-desc">
+          Select the intensity that matches your app's requirements, from fast build times to maximum reverse-engineering resistance.
+        </p>
+
+        <div class="table-wrapper">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Preset</th>
+                <th>Bundle Overhead</th>
+                <th>Build Speed</th>
+                <th>Protection Level</th>
+                <th>Key AST Transformations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="preset-badge badge-light">light</span></td>
+                <td>+5% to 15%</td>
+                <td>Ultra-Fast</td>
+                <td>Moderate</td>
+                <td>Mangled identifiers, compact output, basic string array, no control-flow flattening.</td>
+              </tr>
+              <tr>
+                <td><span class="preset-badge badge-balanced">balanced (default)</span></td>
+                <td>+40% to 70%</td>
+                <td>Normal</td>
+                <td>High</td>
+                <td>Hexadecimal identifiers, Base64 string encoding, string splitting, conservative control-flow flattening.</td>
+              </tr>
+              <tr>
+                <td><span class="preset-badge badge-aggressive">aggressive</span></td>
+                <td>+100% to 250%</td>
+                <td>Thorough</td>
+                <td>Maximum</td>
+                <td>RC4+Base64 encryption, deep control-flow flattening, dead code injection, numbers to expressions.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICKSTART SECTION -->
+    <section class="section" id="quickstart">
+      <div class="container">
+        <div class="section-label red-accent">QUICKSTART</div>
+        <h2 class="bold-headline">
+          ONE-LINE INTEGRATION <br>
+          <span class="hl-red">IN VITE.CONFIG.JS</span>
+        </h2>
+        <p class="section-desc">
+          Drop it into your existing Laravel + Vite configuration alongside <code>laravel-vite-plugin</code>:
+        </p>
+
+        <div class="code-example-box">
+          <div class="code-header">
+            <span class="file-name">vite.config.js</span>
+            <span class="version-pill">ESM / CJS</span>
+          </div>
+          <pre class="code-content"><code><span class="token-keyword">import</span> { defineConfig } <span class="token-keyword">from</span> <span class="token-string">'vite'</span>;
+<span class="token-keyword">import</span> laravel <span class="token-keyword">from</span> <span class="token-string">'laravel-vite-plugin'</span>;
+<span class="token-highlight-line"><span class="token-keyword">import</span> <span class="token-brand-red">tyroObfuscator</span> <span class="token-keyword">from</span> <span class="token-string">'tyro-obfuscator'</span>;</span>
+
+<span class="token-keyword">export default</span> <span class="token-function">defineConfig</span>({
+  <span class="token-property">plugins</span>: [
+    <span class="token-function">laravel</span>([
+      <span class="token-string">'resources/css/app.css'</span>,
+      <span class="token-string">'resources/js/app.js'</span>,
+    ]),
+
+<span class="token-highlight-line">    <span class="token-comment">// Add Tyro Obfuscator — runs automatically on npm run build</span>
+    <span class="token-brand-red">tyroObfuscator</span>({
+      <span class="token-property">preset</span>: <span class="token-string">'balanced'</span>, <span class="token-comment">// 'light' | 'balanced' | 'aggressive'</span>
+    }),</span>
+  ],
+});</code></pre>
+        </div>
+
+        <!-- DEFENSE PAIR CALLOUT -->
+        <div class="pair-banner">
+          <div class="pair-content">
+            <div class="pair-badge">THE ULTIMATE LARAVEL DEFENSE PAIR</div>
+            <h3 class="pair-title">Tyro Camo + Tyro Obfuscator</h3>
+            <p class="pair-desc">
+              Combine <strong>Tyro Camo</strong> to cloak your asset filenames (so attackers cannot tell where sensitive code lives) 
+              with <strong>Tyro Obfuscator</strong> to scramble the internal JavaScript logic.
+            </p>
+          </div>
+          <a href="https://github.com/hasinhayder/tyro-camo" target="_blank" rel="noopener" class="btn-primary">Learn About Tyro Camo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-credits">
+        Released under the MIT License • Built by <a href="https://github.com/hasinhayder" target="_blank" rel="noopener">Hasin Hayder</a>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.npmjs.com/package/tyro-obfuscator" target="_blank" rel="noopener">NPM Package</a>
+        <a href="https://github.com/hasinhayder/tyro-obfuscator" target="_blank" rel="noopener">GitHub Repository</a>
+        <a href="#hero">Back to Top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
