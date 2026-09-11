@@ -1,6 +1,6 @@
 {
   "name": "tyro-obfuscator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Production-quality Vite plugin for selectively obfuscating JavaScript chunks using javascript-obfuscator, optimized for Laravel and modern web applications.",
   "type": "module",
   "license": "MIT",
