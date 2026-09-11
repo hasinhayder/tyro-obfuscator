@@ -7,6 +7,7 @@ import type { ObfuscationPreset } from './types';
  * and zero/negligible impact on bundle execution performance and size.
  */
 export const LIGHT_PRESET: Partial<ObfuscatorOptions> = {
+  advertisement: false,
   compact: true,
   controlFlowFlattening: false,
   deadCodeInjection: false,
@@ -35,6 +36,7 @@ export const LIGHT_PRESET: Partial<ObfuscatorOptions> = {
  * and splits strings without exploding bundle size or crippling CPU.
  */
 export const BALANCED_PRESET: Partial<ObfuscatorOptions> = {
+  advertisement: false,
   compact: true,
   controlFlowFlattening: true,
   controlFlowFlatteningThreshold: 0.4,
@@ -68,6 +70,7 @@ export const BALANCED_PRESET: Partial<ObfuscatorOptions> = {
  * NOTE: Yields larger bundle sizes and higher execution overhead.
  */
 export const AGGRESSIVE_PRESET: Partial<ObfuscatorOptions> = {
+  advertisement: false,
   compact: true,
   controlFlowFlattening: true,
   controlFlowFlatteningThreshold: 0.75,
@@ -109,6 +112,7 @@ export function resolvePresetOptions(
 ): ObfuscatorOptions {
   const base = PRESETS[preset] ?? PRESETS.balanced;
   return {
+    advertisement: false,
     ...base,
     ...userOverrides,
   } as ObfuscatorOptions;

@@ -25,13 +25,19 @@ export function obfuscateChunk({
     };
   }
 
+  // Explicitly suppress "JavaScript Obfuscator Pro" terminal advertisement banners
+  const finalOptions: ObfuscatorOptions = {
+    advertisement: false,
+    ...options,
+  };
+
   const startTime = Date.now();
   const originalSize = Buffer.byteLength(code, 'utf8');
 
   try {
-    const result = JavaScriptObfuscator.obfuscate(code, options);
+    const result = JavaScriptObfuscator.obfuscate(code, finalOptions);
     const obfuscatedCode = result.getObfuscatedCode();
-    const sourceMap = options.sourceMap ? result.getSourceMap() : undefined;
+    const sourceMap = finalOptions.sourceMap ? result.getSourceMap() : undefined;
     const durationMs = Date.now() - startTime;
     const obfuscatedSize = Buffer.byteLength(obfuscatedCode, 'utf8');
 
