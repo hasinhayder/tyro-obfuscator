@@ -10,12 +10,12 @@ Production-grade Vite plugin for selectively obfuscating client-side JavaScript 
 
 ## Why Tyro Obfuscator?
 
-- 🎯 **Designed for Laravel**: Works out of the box alongside `laravel-vite-plugin` without interfering with `@vite()` directives, asset manifests, or blade helpers.
-- ⚡ **Zero Dev Overhead**: Runs exclusively during production builds (`apply: 'build'`). Your local development server remains lightning fast.
-- 🧠 **Smart Chunk Selection**: Obfuscates your application code while automatically excluding third-party vendor libraries (`node_modules`), saving compilation time and bundle bloat.
-- 🛡️ **Tuned Presets**: Choose between `light`, `balanced` (default), or `aggressive` without needing to master hundreds of compiler flags.
-- 🔒 **Safe Lifecycle Execution**: Injects at Rollup's `renderChunk` hook so modern ES syntax, dynamic imports, and chunk graphs are preserved cleanly without breaking file hashes or sourcemaps.
-- 🎨 **Asset Protection**: Completely ignores CSS, SVGs, images, fonts, and HTML manifests.
+- **Designed for Laravel**: Works out of the box alongside `laravel-vite-plugin` without interfering with `@vite()` directives, asset manifests, or blade helpers.
+- **Zero Dev Overhead**: Runs exclusively during production builds (`apply: 'build'`). Your local development server remains lightning fast.
+- **Smart Chunk Selection**: Obfuscates your application code while automatically excluding third-party vendor libraries (`node_modules`), saving compilation time and bundle bloat.
+- **Tuned Presets**: Choose between `light`, `balanced` (default), or `aggressive` without needing to master hundreds of compiler flags.
+- **Safe Lifecycle Execution**: Injects at Rollup's `renderChunk` hook so modern ES syntax, dynamic imports, and chunk graphs are preserved cleanly without breaking file hashes or sourcemaps.
+- **Asset Protection**: Completely ignores CSS, SVGs, images, fonts, and HTML manifests.
 
 ---
 
@@ -164,27 +164,6 @@ export default defineConfig({
 
 ---
 
-## Chunk Selection & Vendor Handling
-
-Obfuscating large third-party libraries (like `lodash`, `axios`, `vue`, `react`, etc.) provides almost zero security benefit while multiplying build time and output size by 3x or 4x.
-
-### Default (`obfuscateChunks: 'application'`)
-The plugin inspects Rollup's chunk module graph. If a chunk consists primarily of modules originating from `node_modules/` or `vendor/`, it is automatically skipped.
-
-### Custom Predicate
-You can also supply your own chunk filter function:
-
-```js
-tyroObfuscator({
-    obfuscateChunks: (chunk) => {
-        // Only obfuscate your proprietary admin or checkout code
-        return chunk.name === 'admin' || chunk.name === 'checkout';
-    },
-})
-```
-
----
-
 ## Source Maps & Security
 
 > [!CAUTION]
@@ -211,13 +190,6 @@ tyroObfuscator({
 > 1. Any code delivered to a user's browser is inherently subject to execution, inspection, debugging, and tampering.
 > 2. **Never store API keys, private credentials, database secrets, or sensitive business logic in client-side JavaScript.**
 > 3. Obfuscation significantly raises the cost and complexity of decompilation, reverse-engineering, and casual code copying — but it does not make JavaScript impossible to analyze given sufficient time and determination.
-
----
-
-## Development vs Production
-
-- **`npm run dev`**: Vite runs an HMR dev server. `tyroObfuscator` is completely inactive (`apply: 'build'`).
-- **`npm run build`**: Vite bundles your assets for distribution. `tyroObfuscator` hooks into `renderChunk`, obfuscates eligible assets, and emits production files.
 
 ---
 
