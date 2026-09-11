@@ -1,6 +1,6 @@
 # Tyro Obfuscator
 
-[![Tests](https://github.com/hasinhayder/tyro-obfuscator/actions/workflows/tests.yml/badge.svg)](https://github.com/hasinhayder/tyro-obfuscator/actions/workflows/tests.yml)
+[![Tests](https://github.com/hasinhayder/tyro-obfuscator/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/hasinhayder/tyro-obfuscator/actions/workflows/tests.yml)
 [![npm version](https://img.shields.io/npm/v/tyro-obfuscator.svg?style=flat-square)](https://www.npmjs.com/package/tyro-obfuscator)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
