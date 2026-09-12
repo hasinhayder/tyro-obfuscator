@@ -56,10 +56,8 @@ export function tyroObfuscator(options: TyroObfuscatorOptions = {}): Plugin {
         return null;
       }
 
-      // Determine sourcemap settings: prioritize plugin's option, then fallback to Vite's build.sourcemap
-      const shouldMap = options.sourceMap !== undefined
-        ? options.sourceMap
-        : Boolean(resolvedConfig?.build?.sourcemap);
+      // Determine sourcemap settings: strictly default to false for security unless explicitly set to true
+      const shouldMap = options.sourceMap ?? false;
 
       // Resolve base preset options + user overrides + sourcemap configuration
       const baseOptions = resolvePresetOptions(options.preset ?? 'balanced', options.options ?? {});

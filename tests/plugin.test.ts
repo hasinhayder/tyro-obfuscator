@@ -18,4 +18,21 @@ describe('Plugin initialization', () => {
     });
     expect(plugin.name).toBe('tyro-obfuscator');
   });
+
+  it('defaults sourceMap to false and produces no sourcemap even if resolvedConfig has sourcemap enabled', async () => {
+    const plugin = tyroObfuscator({ logLevel: 'silent' });
+    if (plugin.configResolved) {
+      // Simulate Vite resolvedConfig with build.sourcemap: true
+      (plugin.configResolved as any)({
+        command: 'build',
+        build: { sourcemap: true },
+      });
+    }
+
+    const chunk = { fileName: 'test.js', isEntry: true, modules: {} } as any;
+    const result = await (plugin.renderChunk as any).call({}, 'const secret = "hello";', chunk);
+
+    expect(result).toBeDefined();
+    expect(result.map).toBeNull();
+  });
 });
